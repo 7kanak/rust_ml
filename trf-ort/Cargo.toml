@@ -1,0 +1,11 @@
+[package]
+name = "trf-ort"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ndarray = "0.15.6"
+ort = { version = "2.0.0-rc.2", features = ["fetch-models"] }
+tokenizers = { version = "0.19.1", features = ["http"] }
+tracing-subscriber = { version = "0.3", default-features = false, features = [ "env-filter", "fmt" ] }
+tracing = "0.1"

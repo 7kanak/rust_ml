@@ -4,3 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+burn = "0.13.2"
+burn-import = "0.13.2"
+burn-ndarray = "0.13.2"
+tokenizers = { version = "0.19.1", features = ["http"] }
+
+
+[build-dependencies]
+burn-import = "0.13.2"

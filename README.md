@@ -2,7 +2,7 @@
 
 
 ### bert-ft
-tried to do inference on onnx loaded transformer model using burn crate. was not able to load the model
+tried to do inference on onnx loaded transformer model using burn crate. was not able to load the model (raised issue with burn) 
 
 
 ### trf-ort

@@ -3,8 +3,8 @@ from transformers import AutoModelForSequenceClassification
 from transformers import TrainingArguments, Trainer
 from transformers import AutoTokenizer
 
-
-
+import torch
+print(torch.cuda.is_available())
 dataset = load_dataset("yelp_review_full", split="train[:500]")
 model_name = "albert/albert-base-v2"
 
@@ -19,8 +19,8 @@ tokenized_datasets = dataset.map(tokenize_function, batched=True)
 small_train_dataset = tokenized_datasets.shuffle(seed=42).select(range(500))
 
 
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=5)
-
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=5).to("cuda")
+print(model.device)
 
 training_args = TrainingArguments(output_dir="test_trainer", num_train_epochs=1, per_device_train_batch_size=4)
 
@@ -30,6 +30,9 @@ trainer = Trainer(
     train_dataset=small_train_dataset,
 )
 trainer.train()
+trainer.model.save_pretrained("./pytorch_model")
+
+
 model = trainer.model.to("cpu")
 from transformers.onnx import FeaturesManager, export as export_onnx
 from pathlib import Path

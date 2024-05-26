@@ -37,7 +37,7 @@ fn main() -> ort::Result<()>{
 
 
 fn load_test_from_file() -> io::Result<Vec<String>>{
-    let file = File::open("/home/kanak/Documents/dev/rust_ml/trf-ort/data/test.txt")?;
+    let file = File::open("data/test.txt")?;
     let reader = BufReader::new(file);
     let lines: Vec<String> = reader.lines().collect::<Result<_, _>>()?;
     Ok(lines)

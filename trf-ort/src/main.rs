@@ -1,5 +1,5 @@
 use tokenizers::tokenizer::{Tokenizer, pad_encodings, PaddingParams};
-use ort::{inputs, self, CUDAExecutionProvider, Session, GraphOptimizationLevel};
+use ort::{self, inputs, CUDAExecutionProvider, GraphOptimizationLevel, Session};
 use ndarray::{ArrayBase, Dim, OwnedRepr, ArrayViewD, Array2, Array};
 use std::env::args;
 use std::time::Instant;

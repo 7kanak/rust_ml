@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 ndarray = "0.15.6"
-ort = { version = "2.0.0-rc.2", features = ["fetch-models"] }
+ort = { version = "2.0.0-rc.2", features = ["fetch-models", "cuda", "load-dynamic","download-binaries"] }
 tokenizers = { version = "0.19.1", features = ["http"] }
 tracing-subscriber = { version = "0.3", default-features = false, features = [ "env-filter", "fmt" ] }
 tracing = "0.1"

@@ -9,7 +9,7 @@ tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
 
 
 # Example input text
-with open("trf-ort/data/test.txt") as f:
+with open("bert-onnx-inference/data/test.txt") as f:
     texts = f.readlines()
 
 # for text in texts:

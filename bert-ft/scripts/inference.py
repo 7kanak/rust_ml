@@ -9,13 +9,15 @@ tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
 
 
 # Example input text
-texts = ['This is a great movie', 'This is a bad movie']
-for text in texts:
-    inputs = tokenizer(text, return_tensors="pt")
-    inputs = {key: value.cuda() for key, value in inputs.items()}
+with open("/home/kanak/Documents/dev/rust_ml/trf-ort/data/test.txt") as f:
+    texts = f.readlines()
 
-    with torch.no_grad():
-        outputs = model(**inputs)
-    print( outputs.logits)
+# for text in texts:
+inputs = tokenizer(texts, return_tensors="pt", padding=True)
+inputs = {key: value.cuda() for key, value in inputs.items()}
+
+with torch.no_grad():
+    outputs = model(**inputs)
+print( outputs.logits)
 
 print(time.time() - s)
